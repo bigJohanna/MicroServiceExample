@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-    @Id @GeneratedValue int id;
+    @Id @GeneratedValue Integer id;
     String userName;
     String realName;
     String city;
@@ -20,4 +20,12 @@ public class User {
     boolean inRelationship;
 
 
+    public User(Integer id, String userName, String realName, String city, float income, boolean inRelationship) {
+        this.id = id;
+        this.userName = userName;
+        this.realName = realName;
+        this.city = city;
+        this.income = income;
+        this.inRelationship = inRelationship;
+    }
 }
