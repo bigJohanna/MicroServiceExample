@@ -53,29 +53,20 @@ public class UsersController {
     // createUser med: PostMapping och @RequestBody User user
     @PostMapping
     public ResponseEntity<EntityModel<User>> createUser(@RequestBody User user) {
-        log.info("Created " + user);
 
+        //409 if conflict, if resource already exists
+        if(repository.findById(user.getId()).isPresent()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        log.info("Created " + user);
         var u = repository.save(user);
         log.info("Saved to repository " + u);
 
         //länkar med EntityModel
-    var entityModel = assembler.toModel(u);
+        var entityModel = assembler.toModel(u);
 
-   return new ResponseEntity<>(entityModel, HttpStatus.CREATED);
+        return new ResponseEntity<>(entityModel, HttpStatus.CREATED);
 
-//        return new ResponseEntity<>(assembler.toModel(repository.getOne(u.getId())), ResponseEntity.created(), );
-      /*
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(linkTo(UsersController.class).slash(u.getId()).toUri());
-        return repository.findById(user.getId())
-                .map(assembler::toModel)
-                .map(ResponseEntity::created)
-                .orElse(ResponseEntity);
-
-       */
-
-
-//        return new ResponseEntity<User>(u, headers, HttpStatus.CREATED);
     }
 
     // deleteUser med DeleteMapping(@Pathvariable long id)
