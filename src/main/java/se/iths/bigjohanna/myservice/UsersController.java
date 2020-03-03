@@ -1,23 +1,24 @@
 package se.iths.bigjohanna.myservice;
 
+import com.fasterxml.jackson.annotation.JacksonAnnotation;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
-
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-
-//här ka nvi lägga en @RequestMapping("/api/users")
 
 @Slf4j
 @RequestMapping("/api/v1/users")
 @RestController
 public class UsersController {
 
+    @Autowired
+    private ObjectMapper objectMapper;
 
     final UsersRepository repository;
     private final UsersModelAssembler assembler;
@@ -69,50 +70,74 @@ public class UsersController {
 
     }
 
-    // deleteUser med DeleteMapping(@Pathvariable long id)
 
+
+    // modifyUser med PatchMapping("/{id}" todo ignore nullValues)
+    @PatchMapping("/{id}")
+    ResponseEntity<EntityModel<User>> modifyUser(@RequestBody User modifiedUser, @PathVariable Integer id){
+        if(repository.findById(id).isPresent()){
+                var u = repository.findById(id).get();
+            ObjectReader readerForUpdating = objectMapper.readerForUpdating(u);
+          //  readerForUpdating.readValue(modifiedUser);
+                /*
+
+   RequestDto existingData = getExistingDataFromSomewhere();
+
+   ObjectReader readerForUpdating = objectMapper.readerForUpdating(existingData);
+
+   RequestDTO mergedData = readerForUpdating.readValue(jsonNode);
+
+   ...
+   *       user->{
+                            user.setUserName(modifiedUser.getUserName());
+                            user.setRealName(modifiedUser.getRealName());
+                            user.setCity(modifiedUser.getCity());
+                            user.setIncome(modifiedUser.getIncome());
+                            user.setInRelationship(modifiedUser.isInRelationship());
+                            repository.save(user);
+                            return user;
+                        }
+                )
+                * */
+                return new ResponseEntity<>(assembler.toModel(u),HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
+    // replaceUser med PutMapping("/{id}" changes all fields posted)
+    @PutMapping("/{id}")
+    ResponseEntity<EntityModel<User>> replaceUser(@RequestBody User newUser, @PathVariable Integer id) {
+
+        if(repository.findById(id).isPresent()) {
+            var u = repository.findById(id)
+                    .map(user -> {
+                        user.setUserName(newUser.getUserName());
+                        user.setRealName(newUser.getRealName());
+                        user.setCity(newUser.getCity());
+                        user.setIncome(newUser.getIncome());
+                        user.setInRelationship(newUser.isInRelationship());
+                        repository.save(user);
+                        log.info("Replaced user with id " + newUser.getId() + " to " + newUser);
+                        return user;
+                    }).get();
+            var entityModel = assembler.toModel(u);
+            return new ResponseEntity<>(entityModel, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    // deleteUser med DeleteMapping(@Pathvariable long id)
     @DeleteMapping("/{id}")
-    ResponseEntity<?> deletePerson(@PathVariable Integer id) {
+    ResponseEntity<?> deleteUser(@PathVariable Integer id) {
         if (repository.existsById(id)) {
-            log.info("User deleted with id " + id);
             repository.deleteById(id);
+            log.info("User deleted with id " + id);
             return new ResponseEntity<>(HttpStatus.OK);
         } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    // modifyUser med PatchMapping("/{id}")
 
-    // replaceUser med PutMapping("/{id}")
-    @PutMapping("/{id}")
-    ResponseEntity<EntityModel<User>> replacePerson(@RequestBody User newUser, @PathVariable Integer id) {
-        return repository.findById(id)
-                .map(user -> {
-                    user.setUserName(newUser.getUserName());
-                    user.setRealName(newUser.getRealName());
-                    user.setCity(newUser.getCity());
-                    user.setIncome(newUser.getIncome());
-                    user.setInRelationship(newUser.isInRelationship());
-                    repository.save(user);
-
-                    return new ResponseEntity<>(assembler.toModel(user), HttpStatus.OK);
-                })
-                .orElseGet(() ->
-                        new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    @PatchMapping("/{id}")
-    ResponseEntity<User> modifyPerson(@RequestBody User newUser, @PathVariable int id) {
-        return repository.findById(id)
-                .map(person -> {
-                    if (newUser.getRealName() != null)
-                        person.setRealName(newUser.getRealName());
-
-                    repository.save(person);
-                    HttpHeaders headers = new HttpHeaders();
-                    headers.setLocation(linkTo(UsersController.class).slash(person.getId()).toUri());
-                    return new ResponseEntity<>(person, headers, HttpStatus.OK);
-                })
-                .orElseGet(() ->
-                        new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
 }
