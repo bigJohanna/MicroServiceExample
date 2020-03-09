@@ -38,6 +38,11 @@ public class UsersControllerIT {
         // TODO: 2020-03-03 eftersom jag redan laddat databasen med tre objekt kommer min post bli id 4. Egentligen skiter jag ju i vilket id den får..Så jag kanske bara ska kolla stickprov på min json? 
     }
 
+    //put
+    //patch
+    //delete
+    //getOne
+    //getAll
 
 }
 
