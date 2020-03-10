@@ -1,11 +1,8 @@
 package se.iths.bigjohanna.myservice;
 
-import com.fasterxml.jackson.annotation.JacksonAnnotation;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -13,11 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.validation.constraints.NotNull;
-import java.io.DataInput;
 import java.io.IOException;
-import java.util.Objects;
+
 
 @Slf4j
 @RequestMapping("/api/v1/users")
@@ -76,54 +70,17 @@ public class UsersController {
 
     }
 
-
-    /*
-        // modifyUser med PatchMapping("/{id}" todo ignore nullValues)
-        @JsonInclude(JsonInclude.Include.NON_NULL)
-        @PatchMapping("/{id}")
-        ResponseEntity<EntityModel<User>> modifyUser(@RequestBody User modifiedUser, @PathVariable Integer id){
-            var findById = repository.findById(id);
-            if(findById.isPresent()){
-                    var user = findById.get();
-                                user.setUserName(modifiedUser.getUserName());
-                                user.setRealName(modifiedUser.getRealName());
-                                user.setCity(modifiedUser.getCity());
-                                user.setIncome(modifiedUser.getIncome());
-                                user.setInRelationship(modifiedUser.isInRelationship());
-                                repository.save(user);
-
-                    return new ResponseEntity<>(assembler.toModel(user),HttpStatus.OK);
-      ObjectReader readerForUpdating = objectMapper.readerForUpdating(u);
-              //  readerForUpdating.readValue(modifiedUser);
-
-
-       RequestDto existingData = getExistingDataFromSomewhere();
-
-       ObjectReader readerForUpdating = objectMapper.readerForUpdating(existingData);
-
-       RequestDTO mergedData = readerForUpdating.readValue(jsonNode);
-
-       ...
-       *     *
-
-
-
-            }
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    */
     @PatchMapping("/{id}")
-    ResponseEntity<EntityModel<User>> updateCertainData(@RequestBody User incompleteUser, @PathVariable Integer id) throws IOException {
+    ResponseEntity<EntityModel<User>> modifyUser(@RequestBody User incompleteUser, @PathVariable Integer id) throws IOException {
 
         objectMapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
         var u = repository.findById(id);
         if (u.isPresent()) {
-        var user = u.get();
-        objectMapper.readerForUpdating(user).readValue(objectMapper.writeValueAsString(incompleteUser));
-        repository.save(user);
-        return new ResponseEntity<>(assembler.toModel(user), HttpStatus.OK);
-        }
-        else
+            var user = u.get();
+            objectMapper.readerForUpdating(user).readValue(objectMapper.writeValueAsString(incompleteUser));
+            repository.save(user);
+            return new ResponseEntity<>(assembler.toModel(user), HttpStatus.OK);
+        } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
