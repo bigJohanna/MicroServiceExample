@@ -29,9 +29,10 @@ public class UsersControllerIT {
     @Autowired
     private UsersRepository usersRepository;
 
+    User user = new User (0,"testUser", "testName", "testCity", 10f, true);
+
     @Test
     void sendRealHttpRequestWithPost() throws Exception{
-        User user = new User (0,"testUser", "testName", "testCity", 10f, true);
         mockMvc.perform(post("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)))
@@ -41,6 +42,10 @@ public class UsersControllerIT {
     }
 
     //put
+    @Test
+    void sendRealHttpRequestWithPut() throws Exception {
+
+    }
     //patch
     //delete
     //getOne

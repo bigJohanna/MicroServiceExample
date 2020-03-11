@@ -69,3 +69,12 @@
 2020-03-11 16:39:19.502  INFO 28415 --- [main] s.i.b.m.UsersControllerClassTest         : Started UsersControllerClassTest in 4.726 seconds (JVM running for 8.097)
 2020-03-11 16:39:19.842  INFO 28415 --- [main] s.i.b.myservice.UsersController          : Replaced user with id 0 to User(id=0, userName=bigTest, realName=Sofia Kall, city=Lund, income=null, inRelationship=true)
 2020-03-11 16:39:20.151  INFO 28415 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-11 17:39:27.619  INFO 28690 --- [main] s.i.b.m.UsersControllerClassTest         : Starting UsersControllerClassTest on Johannas-Air.localdomain with PID 28690 (started by JLO in /Users/JLO/Documents/Webservices/myservice)
+2020-03-11 17:39:27.636  INFO 28690 --- [main] s.i.b.m.UsersControllerClassTest         : No active profile set, falling back to default profiles: default
+2020-03-11 17:39:33.735  INFO 28690 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-11 17:39:34.365  INFO 28690 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-03-11 17:39:34.365  INFO 28690 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-03-11 17:39:34.390  INFO 28690 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 25 ms
+2020-03-11 17:39:34.455  INFO 28690 --- [main] s.i.b.m.UsersControllerClassTest         : Started UsersControllerClassTest in 8.25 seconds (JVM running for 11.787)
+2020-03-11 17:39:34.893  INFO 28690 --- [main] s.i.b.myservice.UsersController          : Replaced user with id 0 to User(id=0, userName=bigTest, realName=Sofia Kall, city=Lund, income=null, inRelationship=true)
+2020-03-11 17:39:35.217  INFO 28690 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
