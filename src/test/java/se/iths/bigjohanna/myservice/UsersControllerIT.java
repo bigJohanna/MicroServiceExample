@@ -1,6 +1,8 @@
 package se.iths.bigjohanna.myservice;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class UsersControllerIT {
 
     @Test
     void sendRealHttpRequestWithPost() throws Exception{
-        User user = new User (0, "testUser", "testName", "testCity", 10, true);
+        User user = new User (0,"testUser", "testName", "testCity", 10f, true);
         mockMvc.perform(post("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)))

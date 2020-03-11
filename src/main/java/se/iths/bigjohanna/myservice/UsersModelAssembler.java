@@ -18,6 +18,7 @@ public class UsersModelAssembler implements RepresentationModelAssembler<User, E
                 linkTo(methodOn(UsersController.class).one(user.getId())).withSelfRel(),
                 linkTo(methodOn(UsersController.class).all()).withRel("users"));
     }
+
     @Override
     public CollectionModel<EntityModel<User>> toCollectionModel(Iterable<? extends User> entities) {
         var collection = StreamSupport.stream(entities.spliterator(), false)

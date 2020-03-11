@@ -1,0 +1,71 @@
+2020-03-11 15:51:07.498  INFO 28317 --- [main] s.i.b.myservice.MyserviceApplication     : Starting MyserviceApplication on Johannas-Air.localdomain with PID 28317 (/Users/JLO/Documents/Webservices/myservice/target/classes started by JLO in /Users/JLO/Documents/Webservices/myservice)
+2020-03-11 15:51:07.510  INFO 28317 --- [main] s.i.b.myservice.MyserviceApplication     : No active profile set, falling back to default profiles: default
+2020-03-11 15:51:09.020  INFO 28317 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-03-11 15:51:09.114  INFO 28317 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81ms. Found 1 JPA repository interfaces.
+2020-03-11 15:51:09.568  INFO 28317 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-11 15:51:09.898  INFO 28317 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-11 15:51:09.912  INFO 28317 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-11 15:51:09.912  INFO 28317 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-11 15:51:10.090  INFO 28317 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-11 15:51:10.090  INFO 28317 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2481 ms
+2020-03-11 15:51:10.259  INFO 28317 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-11 15:51:10.436  INFO 28317 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-11 15:51:10.502  INFO 28317 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-03-11 15:51:10.598  INFO 28317 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-03-11 15:51:10.785  INFO 28317 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-03-11 15:51:10.943  INFO 28317 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-03-11 15:51:11.796  INFO 28317 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-03-11 15:51:11.804  INFO 28317 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-11 15:51:12.384  WARN 28317 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-03-11 15:51:12.530  INFO 28317 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-11 15:51:12.954  INFO 28317 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-11 15:51:12.963  INFO 28317 --- [main] s.i.b.myservice.MyserviceApplication     : Started MyserviceApplication in 6.433 seconds (JVM running for 8.12)
+2020-03-11 16:04:10.517  WARN 28317 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s850ms), soft-evicting connections from pool.
+2020-03-11 16:19:09.246  INFO 28317 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-11 16:19:09.249  INFO 28317 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-11 16:19:09.286  INFO 28317 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 36 ms
+2020-03-11 16:19:09.861  INFO 28317 --- [http-nio-8080-exec-1] s.i.b.myservice.UsersController          : Created User(id=99, userName=tjena, realName=nyttNamn, city=Helsingborg, income=60000.0, inRelationship=true)
+2020-03-11 16:19:09.866  INFO 28317 --- [http-nio-8080-exec-1] s.i.b.myservice.UsersController          : Saved to repository User(id=4, userName=tjena, realName=nyttNamn, city=Helsingborg, income=60000.0, inRelationship=true)
+2020-03-11 16:19:13.608  INFO 28317 --- [http-nio-8080-exec-2] s.i.b.myservice.UsersController          : All persons called
+2020-03-11 16:19:22.594  INFO 28317 --- [http-nio-8080-exec-3] s.i.b.myservice.UsersController          : One person called
+2020-03-11 16:19:28.644  INFO 28317 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:19:28.647  INFO 28317 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-03-11 16:19:28.648  INFO 28317 --- [SpringContextShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2020-03-11 16:19:28.665  INFO 28317 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-03-11 16:19:28.671  INFO 28317 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-03-11 16:36:35.326  INFO 28397 --- [main] s.i.b.m.UsersControllerClassTest         : Starting UsersControllerClassTest on Johannas-Air.localdomain with PID 28397 (started by JLO in /Users/JLO/Documents/Webservices/myservice)
+2020-03-11 16:36:35.339  INFO 28397 --- [main] s.i.b.m.UsersControllerClassTest         : No active profile set, falling back to default profiles: default
+2020-03-11 16:36:38.540  INFO 28397 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:36:39.097  INFO 28397 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-03-11 16:36:39.098  INFO 28397 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-03-11 16:36:39.122  INFO 28397 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 22 ms
+2020-03-11 16:36:39.182  INFO 28397 --- [main] s.i.b.m.UsersControllerClassTest         : Started UsersControllerClassTest in 5.347 seconds (JVM running for 8.798)
+2020-03-11 16:36:39.519  INFO 28397 --- [main] s.i.b.myservice.UsersController          : Updated user with id 1
+2020-03-11 16:36:39.871  INFO 28397 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:37:36.240  INFO 28403 --- [main] s.i.b.m.UsersControllerClassTest         : Starting UsersControllerClassTest on Johannas-Air.localdomain with PID 28403 (started by JLO in /Users/JLO/Documents/Webservices/myservice)
+2020-03-11 16:37:36.255  INFO 28403 --- [main] s.i.b.m.UsersControllerClassTest         : No active profile set, falling back to default profiles: default
+2020-03-11 16:37:39.465  INFO 28403 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:37:39.985  INFO 28403 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-03-11 16:37:39.986  INFO 28403 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-03-11 16:37:40.022  INFO 28403 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 36 ms
+2020-03-11 16:37:40.086  INFO 28403 --- [main] s.i.b.m.UsersControllerClassTest         : Started UsersControllerClassTest in 4.792 seconds (JVM running for 8.048)
+2020-03-11 16:37:40.499  INFO 28403 --- [main] s.i.b.myservice.UsersController          : Replaced user with id 0 to User(id=0, userName=bigTest, realName=Sofia Kall, city=Lund, income=null, inRelationship=true)
+2020-03-11 16:37:40.817  INFO 28403 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:38:32.924  INFO 28409 --- [main] s.i.b.m.UsersControllerClassTest         : Starting UsersControllerClassTest on Johannas-Air.localdomain with PID 28409 (started by JLO in /Users/JLO/Documents/Webservices/myservice)
+2020-03-11 16:38:32.932  INFO 28409 --- [main] s.i.b.m.UsersControllerClassTest         : No active profile set, falling back to default profiles: default
+2020-03-11 16:38:36.019  INFO 28409 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:38:36.555  INFO 28409 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-03-11 16:38:36.556  INFO 28409 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-03-11 16:38:36.577  INFO 28409 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 21 ms
+2020-03-11 16:38:36.627  INFO 28409 --- [main] s.i.b.m.UsersControllerClassTest         : Started UsersControllerClassTest in 4.908 seconds (JVM running for 8.001)
+2020-03-11 16:38:36.979  INFO 28409 --- [main] s.i.b.myservice.UsersController          : Replaced user with id 0 to User(id=0, userName=bigTest, realName=Sofia Kall, city=null, income=null, inRelationship=true)
+2020-03-11 16:38:37.281  INFO 28409 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:39:15.849  INFO 28415 --- [main] s.i.b.m.UsersControllerClassTest         : Starting UsersControllerClassTest on Johannas-Air.localdomain with PID 28415 (started by JLO in /Users/JLO/Documents/Webservices/myservice)
+2020-03-11 16:39:15.854  INFO 28415 --- [main] s.i.b.m.UsersControllerClassTest         : No active profile set, falling back to default profiles: default
+2020-03-11 16:39:18.882  INFO 28415 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-11 16:39:19.421  INFO 28415 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-03-11 16:39:19.422  INFO 28415 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-03-11 16:39:19.446  INFO 28415 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 24 ms
+2020-03-11 16:39:19.502  INFO 28415 --- [main] s.i.b.m.UsersControllerClassTest         : Started UsersControllerClassTest in 4.726 seconds (JVM running for 8.097)
+2020-03-11 16:39:19.842  INFO 28415 --- [main] s.i.b.myservice.UsersController          : Replaced user with id 0 to User(id=0, userName=bigTest, realName=Sofia Kall, city=Lund, income=null, inRelationship=true)
+2020-03-11 16:39:20.151  INFO 28415 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
