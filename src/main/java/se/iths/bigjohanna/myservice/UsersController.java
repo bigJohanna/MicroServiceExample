@@ -54,9 +54,10 @@ public class UsersController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         log.info("Created " + user);
-        log.info("Saved to repository " + repository.save(user));
+        var u = repository.save(user);
+        log.info("Saved to repository " + u );
 
-        return new ResponseEntity<>(assembler.toModel(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(assembler.toModel(u), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{id}")
